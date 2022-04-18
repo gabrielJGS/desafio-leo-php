@@ -1,0 +1,13 @@
+.navbar-collapse{
+  justify-content: flex-end;
+}
+.me-auto{
+  margin-right: 0!important;
+}
+.dropdown-toggle{
+  display: flex;
+  flex-direction: row;
+}
+.username{
+  margin: 0px 4px 0px 8px;
+}

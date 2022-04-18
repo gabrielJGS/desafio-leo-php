@@ -3,7 +3,7 @@
 require_once '../../../config.php';
 require_once '../../../src/controllers/course.php';
 // require_once '../../../src/modules/messages.php';
-// require_once '../partials/header.php';
+require_once '../partials/header.php';
 
 $courses = readCourseAction($conn);
 
