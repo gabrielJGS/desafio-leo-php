@@ -42,4 +42,4 @@ $courses = readCourseAction($conn);
     <?php endforeach; ?>
   </table>
 </div>
-<!-- <?php require_once '../partials/footer.php'; ?> -->
+<?php require_once '../partials/footer.php'; ?>
