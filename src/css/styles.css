@@ -11,3 +11,6 @@
 .username{
   margin: 0px 4px 0px 8px;
 }
+.rounded{
+  border-radius: 50%!important;
+}
