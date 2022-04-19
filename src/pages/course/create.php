@@ -18,21 +18,17 @@ if (isset($_POST["title"]) && isset($_POST["description"]) && isset($_POST["imag
   <form action="./create.php" method="POST">
     <div class="mb-3">
       <label for="title" class="form-label">Título</label>
-      <input type="text" class="form-control" name="title" placeholder="Digite o título do curso">
+      <input type="text" class="form-control" name="title" required placeholder="Digite o título do curso">
     </div>
     <div class="mb-3">
       <label for="description" class="form-label">Descrição</label>
-      <input type="text" class="form-control" name="description" placeholder="Digite a descrição do curso">
+      <input type="text" class="form-control" name="description" required placeholder="Digite a descrição do curso">
     </div>
     <div class="mb-3">
       <label for="description" class="form-label">Imagem</label>
-      <input type="text" class="form-control" name="image" placeholder="Escolha a imagem que irá representear o curso">
+      <input type="text" class="form-control" name="image" required placeholder="Escolha a imagem que irá representear o curso">
     </div>
-    <div class="mb-3">
-      <label for="description" class="form-label">Link</label>
-      <input type="text" class="form-control" name="link" placeholder="Digite o link do curso">
-    </div>
-    <button type="submit" class="btn btn-primary">Enviar</button>
+    <button type="submit" class="btn btn-success">Enviar</button>
   </form>
 </div>
 <?php require_once '../partials/footer.php'; ?>

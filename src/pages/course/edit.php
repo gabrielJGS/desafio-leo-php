@@ -23,10 +23,6 @@ $course = findCourseAction($conn, $_GET['id']);
       <label for="description" class="form-label">Imagem</label>
       <input type="text" class="form-control" name="image" value="<?= $course['image'] ?>" required placeholder="Escolha a imagem que irá representear o curso">
     </div>
-    <div class="mb-3">
-      <label for="description" class="form-label">Link</label>
-      <input type="text" class="form-control" name="link" value="<?= $course['link'] ?>" required placeholder="Digite o link do curso">
-    </div>
     <button type="submit" class="btn btn-primary">Salvar</button>
   </form>
 </div>
