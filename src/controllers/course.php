@@ -4,7 +4,11 @@ require_once '../../database/course.php';
 
 function findCourseAction($conn, $id)
 {
-  return findCourseDb($conn, $id);
+  $course = findCourseDb($conn, $id);
+  if (!isset($course)) {
+    return header("Location: ./read.php?message=read-error");
+  }
+  return $course;
 }
 
 function readCourseAction($conn)

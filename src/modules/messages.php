@@ -2,6 +2,10 @@
 
 function printMessage($message)
 {
+    if ($message == 'read-error')
+        return '<div class="alert alert-dismissible alert-danger">Ocorreu um erro ao acessar o curso!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>';
     if ($message == 'success-create')
         return '<div class="alert alert-dismissible alert-success">Curso cadastrado com sucesso!
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
