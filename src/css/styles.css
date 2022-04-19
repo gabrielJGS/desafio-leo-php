@@ -27,6 +27,9 @@ div .input-group button{
   border: 1px solid #999;
   background-color: #efefef;
 }
+.alert{
+  margin: 10px!important;
+}
 .container{
   padding-bottom: 15px;
 }

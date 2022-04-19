@@ -2,7 +2,7 @@
 
 require_once '../../../config.php';
 require_once '../../../src/controllers/course.php';
-// require_once '../../../src/modules/messages.php';
+require_once '../../../src/modules/messages.php';
 require_once '../partials/header.php';
 
 $courses = readCourseAction($conn);
@@ -51,6 +51,7 @@ $courses = readCourseAction($conn);
   </button>
 </div>
 <div class="container">
+    <?php if (isset($_GET['message'])) echo (printMessage($_GET['message'])); ?>
   <h3 style="padding-top: 25px;">MEUS CURSOS</h3>
   <hr><br>
   <div class="row row-cols-1 row-cols-md-4 g-4">
