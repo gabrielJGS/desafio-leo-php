@@ -3,7 +3,7 @@
 function findCourseDb($conn, $id)
 {
   $id = mysqli_real_escape_string($conn, $id);
-  if(!$id){
+  if (!$id) {
     exit('param error');
   }
   $course = null;
@@ -29,7 +29,7 @@ function createCourseDb($conn, $title, $description, $image)
   $description = mysqli_real_escape_string($conn,  $description);
   $image = mysqli_real_escape_string($conn,  $image);
 
-  if ($title && $description && $image) {
+  if (!$title || !$description || !$image) {
     return false;
   }
   $sql = "INSERT INTO courses (title, description, image) VALUES (?, ?, ?)";
@@ -44,17 +44,34 @@ function createCourseDb($conn, $title, $description, $image)
   return true;
 }
 
-function readCourseDb($conn)
+function readCourseDb($conn, $search_text)
 {
   $courses = [];
+  if ($search_text == "") {
+    $sql = "SELECT * FROM courses";
+    $result = mysqli_query($conn, $sql);
+    $result_check = mysqli_num_rows($result);
+    if ($result_check > 0) {
+      $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    }
+  } else {
+    $search_text = "%$search_text%";
+    $search_text = mysqli_real_escape_string($conn,  $search_text);
+    $sql = "SELECT id, title, description, image FROM courses WHERE title LIKE ?";
+    $stmt = mysqli_stmt_init($conn);
 
-  $sql = "SELECT * FROM courses";
-  $result = mysqli_query($conn, $sql);
+    if (!mysqli_stmt_prepare($stmt, $sql))
+      exit('SQL error');
 
-  $result_check = mysqli_num_rows($result);
-
-  if ($result_check > 0)
-    $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_stmt_bind_param($stmt, 's', $search_text);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    if ($result->num_rows > 0) {
+      while ($request_list_row = $result->fetch_assoc()) {
+        array_push($courses, $request_list_row);
+      }
+    }
+  }
 
   mysqli_close($conn);
   return $courses;

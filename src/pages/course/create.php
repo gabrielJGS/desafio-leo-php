@@ -4,12 +4,8 @@ require_once '../../../config.php';
 require_once '../../controllers/course.php';
 require_once '../partials/header.php';
 
-if ($_POST) {
-  print_r($_POST);
-}
-
-if (isset($_POST["title"]) && isset($_POST["description"]) && isset($_POST["image"]) && isset($_POST["link"]))
-  createCourseAction($conn, $_POST["title"], $_POST["description"], $_POST["image"], isset($_POST["link"]));
+if (isset($_POST["title"]) && isset($_POST["description"]) && isset($_POST["image"]))
+  createCourseAction($conn, $_POST["title"], $_POST["description"], $_POST["image"]);
 ?>
 <div class="container">
   <div class="actionbuttons">

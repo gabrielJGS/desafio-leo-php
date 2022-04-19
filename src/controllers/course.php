@@ -11,9 +11,9 @@ function findCourseAction($conn, $id)
   return $course;
 }
 
-function readCourseAction($conn)
+function readCourseAction($conn, $search_text)
 {
-  return readCourseDb($conn);
+  return readCourseDb($conn, $search_text);
 }
 
 function createCourseAction($conn, $title, $description, $image)
