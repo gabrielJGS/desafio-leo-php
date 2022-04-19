@@ -3,6 +3,9 @@
 function findCourseDb($conn, $id)
 {
   $id = mysqli_real_escape_string($conn, $id);
+  if(!$id){
+    exit('param error');
+  }
   $course = null;
 
   $sql = "SELECT * FROM courses  WHERE id = ?";
@@ -27,17 +30,18 @@ function createCourseDb($conn, $title, $description, $image)
   $image = mysqli_real_escape_string($conn,  $image);
 
   if ($title && $description && $image) {
-    $sql = "INSERT INTO courses (title, description, image) VALUES (?, ?, ?)";
-    $stmt = mysqli_stmt_init($conn);
-
-    if (!mysqli_stmt_prepare($stmt, $sql))
-      exit('SQL error');
-
-    mysqli_stmt_bind_param($stmt, 'sss', $title, $description, $image);
-    mysqli_stmt_execute($stmt);
-    mysqli_close($conn);
-    return true;
+    return false;
   }
+  $sql = "INSERT INTO courses (title, description, image) VALUES (?, ?, ?)";
+  $stmt = mysqli_stmt_init($conn);
+
+  if (!mysqli_stmt_prepare($stmt, $sql))
+    exit('SQL error');
+
+  mysqli_stmt_bind_param($stmt, 'sss', $title, $description, $image);
+  mysqli_stmt_execute($stmt);
+  mysqli_close($conn);
+  return true;
 }
 
 function readCourseDb($conn)
@@ -58,33 +62,35 @@ function readCourseDb($conn)
 
 function updateCourseDb($conn, $id, $title, $description, $image)
 {
-  if ($id && $title && $description && $image) {
-    $sql = "UPDATE courses SET title = ?, description = ?, image = ? WHERE id = ?";
-    $stmt = mysqli_stmt_init($conn);
-
-    if (!mysqli_stmt_prepare($stmt, $sql))
-      exit('SQL error');
-
-    mysqli_stmt_bind_param($stmt, 'sssi', $title, $description, $image, $id);
-    mysqli_stmt_execute($stmt);
-    mysqli_close($conn);
-    return true;
+  if (!$id || !$title || !$description || !$image) {
+    return false;
   }
+  $sql = "UPDATE courses SET title = ?, description = ?, image = ? WHERE id = ?";
+  $stmt = mysqli_stmt_init($conn);
+
+  if (!mysqli_stmt_prepare($stmt, $sql))
+    exit('SQL error');
+
+  mysqli_stmt_bind_param($stmt, 'sssi', $title, $description, $image, $id);
+  mysqli_stmt_execute($stmt);
+  mysqli_close($conn);
+  return true;
 }
 
 function deleteCourseDb($conn, $id)
 {
   $id = mysqli_real_escape_string($conn, $id);
 
-  if ($id) {
-    $sql = "DELETE FROM courses WHERE id = ?";
-    $stmt = mysqli_stmt_init($conn);
-
-    if (!mysqli_stmt_prepare($stmt, $sql))
-      exit('SQL error');
-
-    mysqli_stmt_bind_param($stmt, 'i', $id);
-    mysqli_stmt_execute($stmt);
-    return true;
+  if (!$id) {
+    return false;
   }
+  $sql = "DELETE FROM courses WHERE id = ?";
+  $stmt = mysqli_stmt_init($conn);
+
+  if (!mysqli_stmt_prepare($stmt, $sql))
+    exit('SQL error');
+
+  mysqli_stmt_bind_param($stmt, 'i', $id);
+  mysqli_stmt_execute($stmt);
+  return true;
 }
