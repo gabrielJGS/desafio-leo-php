@@ -20,21 +20,20 @@ function findCourseDb($conn, $id)
   return $course;
 }
 
-function createCourseDb($conn, $title, $description, $image, $link)
+function createCourseDb($conn, $title, $description, $image)
 {
   $title = mysqli_real_escape_string($conn, $title);
   $description = mysqli_real_escape_string($conn,  $description);
   $image = mysqli_real_escape_string($conn,  $image);
-  $link = mysqli_real_escape_string($conn,  $link);
 
-  if ($title && $description && $image && $link) {
-    $sql = "INSERT INTO courses (title, description, image, link) VALUES (?, ?, ?, ?)";
+  if ($title && $description && $image) {
+    $sql = "INSERT INTO courses (title, description, image) VALUES (?, ?, ?)";
     $stmt = mysqli_stmt_init($conn);
 
     if (!mysqli_stmt_prepare($stmt, $sql))
       exit('SQL error');
 
-    mysqli_stmt_bind_param($stmt, 'ssss', $title, $description, $image, $link);
+    mysqli_stmt_bind_param($stmt, 'sss', $title, $description, $image);
     mysqli_stmt_execute($stmt);
     mysqli_close($conn);
     return true;
@@ -57,16 +56,16 @@ function readCourseDb($conn)
   return $courses;
 }
 
-function updateCourseDb($conn, $id, $title, $description, $image, $link)
+function updateCourseDb($conn, $id, $title, $description, $image)
 {
-  if ($id && $title && $description && $image && $link) {
-    $sql = "UPDATE courses SET title = ?, description = ?, image = ?, link = ? WHERE id = ?";
+  if ($id && $title && $description && $image) {
+    $sql = "UPDATE courses SET title = ?, description = ?, image = ? WHERE id = ?";
     $stmt = mysqli_stmt_init($conn);
 
     if (!mysqli_stmt_prepare($stmt, $sql))
       exit('SQL error');
 
-    mysqli_stmt_bind_param($stmt, 'ssssi', $title, $description, $image, $link, $id);
+    mysqli_stmt_bind_param($stmt, 'sssi', $title, $description, $image, $id);
     mysqli_stmt_execute($stmt);
     mysqli_close($conn);
     return true;
