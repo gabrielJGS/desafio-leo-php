@@ -8,8 +8,11 @@ if (isset($_POST['id']))
   deleteCourseAction($conn, $_POST['id']);
 ?>
 <div class="container">
-  <form action="./delete.php" method="POST">
-  <input type="hidden" name="id" value="<?= $_GET['id'] ?>" required />
+  <div class="actionbuttons">
+    <a href="javascript:history.back()" class="btn btn-warning">Voltar</a>
+  </div>
+  <form action="./delete.php" method="POST" class="form">
+    <input type="hidden" name="id" value="<?= $_GET['id'] ?>" required />
     <div class="mb-3">
       <label for="title" class="form-label">Você tem certeza que deseja remover o curso?</label>
     </div>

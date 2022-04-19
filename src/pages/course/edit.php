@@ -11,7 +11,7 @@ $course = findCourseAction($conn, $_GET['id']);
 ?>
 <div class="container">
   <div class="actionbuttons">
-    <a href="../../../index.php" class="btn btn-warning">Voltar</a>
+    <a href="javascript:history.back()" class="btn btn-warning">Voltar</a>
     <form action="./delete.php" method="GET">
       <input type="hidden" name="id" value="<?= $course['id'] ?>" required />
       <button type="submit" class="btn btn-danger">Excluir</button>

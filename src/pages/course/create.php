@@ -4,7 +4,7 @@ require_once '../../../config.php';
 require_once '../../controllers/course.php';
 require_once '../partials/header.php';
 
-if($_POST){
+if ($_POST) {
   print_r($_POST);
 }
 
@@ -12,10 +12,10 @@ if (isset($_POST["title"]) && isset($_POST["description"]) && isset($_POST["imag
   createCourseAction($conn, $_POST["title"], $_POST["description"], $_POST["image"], isset($_POST["link"]));
 ?>
 <div class="container">
-  <div class="row">
-    <h1>Criação de curso:</h1>
+  <div class="actionbuttons">
+    <a href="javascript:history.back()" class="btn btn-warning">Voltar</a>
   </div>
-  <form action="./create.php" method="POST">
+  <form action="./create.php" method="POST" class="form">
     <div class="mb-3">
       <label for="title" class="form-label">Título</label>
       <input type="text" class="form-control" name="title" required placeholder="Digite o título do curso">
