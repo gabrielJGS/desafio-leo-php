@@ -14,7 +14,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fff;">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fff; padding: 10px 25px 10px 25px">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <img src="../../imgs/logo.png" alt="">
