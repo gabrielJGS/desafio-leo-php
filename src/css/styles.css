@@ -61,6 +61,11 @@ div .input-group button{
 body{
   background-color: #efefef;
 }
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
 .card-body .btn{
   width: 100%;
   border-radius: 25px;
