@@ -62,7 +62,7 @@ $courses = readCourseAction($conn);
           <div class="card-body">
             <h5 class="card-title"><?= htmlspecialchars($row['title']) ?></h5>
             <p class="card-text text-muted"><?= htmlspecialchars($row['description']) ?></p>
-            <a href="<?= htmlspecialchars($row['link']) ?>" class="btn btn-success">Ver curso</a>
+            <a href="./edit.php?id=<?= htmlspecialchars($row['id']) ?>" class="btn btn-success">Ver curso</a>
           </div>
         </div>
       </div>
