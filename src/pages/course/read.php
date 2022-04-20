@@ -10,40 +10,29 @@ if (isset($_GET['search'])) {
   $search_text = $_GET['search'];
 }
 $courses = readCourseAction($conn, $search_text);
-
+$limit = count($courses) < 3 ? count($courses) : 3;
+echo $limit;
 ?>
 <html>
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <?php for ($x = 0; $x < $limit; $x++) {
+      echo "<button type='button' data-bs-target='#carouselExampleIndicators' data-bs-slide-to=" . $x . " " . ($x == 0 ? "class='active'" : "class") . " aria-current=" . ($x == 0 ? "'true'" : "'false'") . " aria-label='Slide " . $x . "'></button>";
+    }
+    ?>
   </div>
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="https://static.wixstatic.com/media/694c88_aefbf6f60ee34b6cb674ea4cc682b102~mv2.png/v1/fill/w_1280,h_202,al_c,enc_auto/694c88_aefbf6f60ee34b6cb674ea4cc682b102~mv2.png" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h4>LOREM IPSUM</h4>
-        <p>Aenean lacinia bibendum nulla sed consectetur. Cum socis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi leo risus, porta ac consec tetur ac, vestibulum at eros.</p>
-        <a href="#" class="carouselbutton">Ver curso</a>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="https://static.wixstatic.com/media/694c88_aefbf6f60ee34b6cb674ea4cc682b102~mv2.png/v1/fill/w_1280,h_202,al_c,enc_auto/694c88_aefbf6f60ee34b6cb674ea4cc682b102~mv2.png" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h4>LOREM IPSUM</h4>
-        <p>Aenean lacinia bibendum nulla sed consectetur. Cum socis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi leo risus, porta ac consec tetur ac, vestibulum at eros.</p>
-        <a href="#" class="carouselbutton">Ver curso</a>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="https://static.wixstatic.com/media/694c88_aefbf6f60ee34b6cb674ea4cc682b102~mv2.png/v1/fill/w_1280,h_202,al_c,enc_auto/694c88_aefbf6f60ee34b6cb674ea4cc682b102~mv2.png" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h4>LOREM IPSUM</h4>
-        <p>Aenean lacinia bibendum nulla sed consectetur. Cum socis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi leo risus, porta ac consec tetur ac, vestibulum at eros.</p>
-        <a href="#" class="carouselbutton">Ver curso</a>
-      </div>
-    </div>
+    <?php for ($x = 1; $x <= $limit; $x++) {
+      $c = $courses[array_rand($courses)];
+      echo "<div class='carousel-item" . ($x == 1 ? " active'" : "'") . ">";
+      echo "  <img src='" . $c["image"] . "' height='402' width='1440' class='d-block w-100' alt='...'>";
+      echo "  <div class='carousel-caption d-none d-md-block'>";
+      echo "    <h4>" . $c["title"] . "</h4>";
+      echo "    <p>" . $c["description"] . "</p>";
+      echo "    <a href='./edit.php?id=" . $c["id"] . "' class='carouselbutton'>Ver curso</a>";
+      echo "  </div>";
+      echo "</div>";
+    } ?>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
