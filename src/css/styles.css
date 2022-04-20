@@ -1,83 +1,99 @@
-.navbar-collapse{
+.navbar-collapse {
   justify-content: flex-end;
 }
-.me-auto{
+
+.me-auto {
   margin-right: 0!important;
 }
-.dropdown-toggle{
+
+.dropdown-toggle {
   display: flex;
   flex-direction: row;
 }
-.username{
+
+.username {
   margin: 0px 4px 0px 8px;
 }
-.rounded{
+
+.rounded {
   border-radius: 50%!important;
   border: 2px solid #999;
 }
-div .input-group{
+
+div .input-group {
   border-radius: 25px!important;
 }
-div .input-group input{
+
+div .input-group input {
   border-radius: 25px 0px 0px 25px;
   background-color: #efefef;
 }
-div .input-group button{
+
+div .input-group button {
   border-radius: 0px 25px 25px 0px;
   border: 1px solid #999;
   background-color: #efefef;
 }
-.alert{
+
+.alert {
   margin: 10px!important;
 }
-.container{
+
+.container {
   padding-bottom: 15px;
 }
-.form{
+
+.form {
   margin: 15px 0px 15px 5px;
   padding: 15px;
   background-color: white;
   border: 2px solid #999;
   border-radius: 15px;
 }
-.carousel-caption{
+
+.carousel-caption {
   background: rgba(21, 24, 21, 0.788);
   margin-right: 50%;
   padding: 15px;
 }
-.carouselbutton{
+
+.carouselbutton {
   color: white;
   text-decoration: none;
   padding: 8px 35px 8px 35px;
   border: 1px solid #fff!important;
   border-radius: 25px;
 }
-.carouselbutton:hover{
-  color:#333;
+
+.carouselbutton:hover {
+  color: #333;
   background-color: white;
   border: 1px solid #333!important;
 }
 
-body{
+body {
   background-color: #efefef;
 }
+
 .card-body {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
-.card-body .btn{
+
+.card-body .btn {
   width: 100%;
   border-radius: 25px;
 }
-.actionbuttons{
+
+.actionbuttons {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-top: 5px;
 }
 
-#novocurso{
+#novocurso {
   min-height: 362.86px;
   max-width: 306px;
   border: 1px dashed #6c757d!important;
@@ -87,19 +103,42 @@ body{
   background-color: #efefef;
   transition: 0.5s all;
 }
-#novocurso .card-body{
+
+#novocurso .card-body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;  
+  justify-content: center;
 }
-#novocurso:hover{
-  color:whitesmoke;
+
+#novocurso:hover {
+  color: whitesmoke;
   background-color: #6c757d;
   border: 1px dashed whitesmoke!important;
 }
+.modal-body{
+  padding: 0;
+}
+.modal-body .btn-primary {
+  margin: auto!important;
+  border-radius: 25px;
+  max-width: 30%;
+}
 
-footer{
+.modal button.btn-close {
+  z-index: 500;
+  margin-top: 0;
+  margin-left: 61%;
+  position: absolute;
+  background: white url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='darkred' %3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+  opacity: 1;
+  padding: 10px;
+  border-radius: 50px;
+  width: 2rem;
+  height: 2rem;
+}
+
+footer {
   position: sticky;
   left: 0;
   bottom: 0;
@@ -107,17 +146,18 @@ footer{
   color: #9e9e9e;
   background-color: white;
 }
-.footer .col-4{
+
+.footer .col-4 {
   margin-right: 300px;
 }
 
-.footerbar{
+.footerbar {
   background-color: #e5e1e2;
   width: 100%;
   padding-left: 19rem;
 }
 
-.footerbutton{
+.footerbutton {
   background-color: #999;
   color: white!important;
   margin: 10px;
@@ -125,7 +165,8 @@ footer{
   border-radius: 50%!important;
   text-decoration: none;
 }
-.footerbutton:hover{
+
+.footerbutton:hover {
   background-color: white;
   color: #999!important;
   border: 1px solid #999;

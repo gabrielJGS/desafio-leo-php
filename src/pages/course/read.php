@@ -11,9 +11,27 @@ if (isset($_GET['search'])) {
 }
 $courses = readCourseAction($conn, $search_text);
 $limit = count($courses) < 3 ? count($courses) : 3;
-echo $limit;
 ?>
 <html>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-body card">
+        <img src="https://www.icc-portugal.com/images/imagem-de-destaque.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h3 class="card-title">EGESTAS TORTOR VULPUTATE</h3>
+          <p class="card-text">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
+            Donec ullamcorper nulla non metus auctor fringilla. Donec sed odio dui. Cras</p>
+          <button type="button" class="btn btn-primary">Inscreva-se</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <?php for ($x = 0; $x < $limit; $x++) {
@@ -75,4 +93,16 @@ echo $limit;
     </div>
   </div>
 </div>
+<script>
+  window.onload = (event) => {
+    var show = localStorage.getItem('showModal');
+    if(show){
+      return;
+    }
+    var myModal = new bootstrap.Modal(document.getElementById('myModal'))
+    myModal.toggle();
+    localStorage.setItem('showModal', true);
+
+  };
+</script>
 <?php require_once '../partials/footer.php'; ?>
